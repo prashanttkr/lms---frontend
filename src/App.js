@@ -1,22 +1,27 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
-import Courses from './pages/Courses';
-import Assignments from './pages/Assignments';
-import Profile from './pages/Profile';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Dashboard from "./pages/Dashboard";
+import Courses from "./pages/Courses";
+import Assignments from "./pages/Assignments";
+import Profile from "./pages/Profile";
+import Login from "./pages/Login";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/assignments" element={<Assignments />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/" element={<Login />} />
+        <Route element={<Layout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/assignments" element={<Assignments />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
+
