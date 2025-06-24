@@ -1,34 +1,41 @@
 import React from "react";
-import { LayoutDashboard, BookOpen, ClipboardList, User } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
-  const links = [
-    { name: "Dashboard", icon: <LayoutDashboard />, path: "/dashboard" },
-    { name: "Courses", icon: <BookOpen />, path: "/courses" },
-    { name: "Assignments", icon: <ClipboardList />, path: "/assignments" },
-    { name: "Profile", icon: <User />, path: "/profile" },
+  const location = useLocation();
+
+  const navItems = [
+    { name: "Dashboard", path: "/dashboard" },
+    { name: "Courses", path: "/courses" },
+    { name: "Assignments", path: "/assignments" },
+    { name: "Profile", path: "/profile" },
+    { name: "Contact", path: "/contact" },
+    { name: "Privacy", path: "/privacy" },
+    { name: "Terms", path: "/terms" },
   ];
 
   return (
-    <div className="h-screen w-64 bg-white shadow-lg p-6 hidden md:block">
-      <h2 className="text-2xl font-bold text-[#00CFFF] mb-8">EduHub</h2>
-      <ul className="space-y-4">
-        {links.map((link, index) => (
-          <li key={index}>
-            <Link
-              to={link.path}
-              className="flex items-center text-gray-700 hover:text-[#00CFFF] transition-colors"
-            >
-              <span className="mr-3">{link.icon}</span>
-              <span>{link.name}</span>
-            </Link>
-          </li>
+    <div className="w-64 bg-sky-600 min-h-screen p-4 text-white fixed left-0 top-0">
+      <div className="mb-10 flex justify-center text-3xl font-bold">
+        <span className="text-white">Edu</span>
+        <span className="bg-white text-sky-600 px-2 rounded">Hub</span>
+      </div>
+
+      <nav className="flex flex-col space-y-4 text-lg">
+        {navItems.map((item) => (
+          <Link
+            key={item.name}
+            to={item.path}
+            className={`hover:font-semibold ${
+              location.pathname === item.path ? "underline font-bold" : ""
+            }`}
+          >
+            {item.name}
+          </Link>
         ))}
-      </ul>
+      </nav>
     </div>
   );
 };
 
 export default Sidebar;
-

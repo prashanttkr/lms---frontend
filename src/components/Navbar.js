@@ -1,20 +1,20 @@
-import React from "react";
+// src/components/Navbar.js
+import React from 'react';
 
-const Navbar = () => {
+const Navbar = ({ isLoggedIn, onLogout }) => {
   return (
-    <nav className="bg-[#00CFFF] px-6 py-4 shadow-md flex items-center justify-between">
-      <h1 className="text-white text-2xl font-bold tracking-wide">
-        Edu<span className="bg-white text-[#00CFFF] px-2 py-1 rounded">Hub</span>
-      </h1>
-      <ul className="hidden md:flex space-x-6 text-white font-medium">
-        <li className="hover:underline cursor-pointer">Dashboard</li>
-        <li className="hover:underline cursor-pointer">Courses</li>
-        <li className="hover:underline cursor-pointer">Assignments</li>
-        <li className="hover:underline cursor-pointer">Profile</li>
-      </ul>
-    </nav>
+    <div className="bg-white shadow px-6 py-4 flex justify-between items-center">
+      <h1 className="text-xl font-bold text-sky-600">EduHub LMS</h1>
+      {isLoggedIn && (
+        <button
+          onClick={onLogout}
+          className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600"
+        >
+          Logout
+        </button>
+      )}
+    </div>
   );
 };
 
 export default Navbar;
-

@@ -1,41 +1,58 @@
 import React from "react";
+import AnimatedPage from "../components/AnimatedPage";
 
-const courses = [
+const courseData = [
   {
-    title: "React for Beginners",
-    instructor: "John Doe",
-    duration: "6 weeks",
+    title: "Data Science",
+    desc: "Learn data analysis, visualization, and machine learning techniques.",
   },
   {
-    title: "Data Structures in JS",
-    instructor: "Jane Smith",
-    duration: "4 weeks",
+    title: "AI / ML",
+    desc: "Master artificial intelligence and machine learning algorithms.",
   },
   {
-    title: "UI/UX Fundamentals",
-    instructor: "Alex Johnson",
-    duration: "3 weeks",
+    title: "Advanced Python",
+    desc: "Enhance your Python skills with real-world applications.",
+  },
+  {
+    title: "MySQL",
+    desc: "Understand relational databases and SQL queries.",
+  },
+  {
+    title: "Mathematics",
+    desc: "Strengthen your mathematical foundations for tech careers.",
+  },
+  {
+    title: "Verbal Aptitude",
+    desc: "Improve language skills for competitive exams and interviews.",
   },
 ];
 
 const Courses = () => {
   return (
-    <div className="text-gray-800">
-      <h1 className="text-3xl font-bold mb-6 text-[#00CFFF]">Courses</h1>
+    <AnimatedPage>
+      <div className="p-6">
+        <h1 className="text-4xl font-bold text-sky-700 mb-2">Explore Courses</h1>
+        <p className="text-gray-600 mb-6">
+          Choose a course to start learning and enhance your skills.
+        </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {courses.map((course, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-xl shadow p-5 hover:shadow-md transition"
-          >
-            <h2 className="text-xl font-semibold mb-2 text-[#00CFFF]">{course.title}</h2>
-            <p className="text-sm text-gray-500 mb-1">Instructor: {course.instructor}</p>
-            <p className="text-sm text-gray-500">Duration: {course.duration}</p>
-          </div>
-        ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {courseData.map((course, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-2xl shadow-md border border-gray-200 hover:shadow-lg transition-all p-6"
+            >
+              <h2 className="text-2xl font-semibold text-sky-700">{course.title}</h2>
+              <p className="text-gray-500 mt-2 text-sm">{course.desc}</p>
+              <button className="mt-4 px-4 py-2 bg-sky-600 text-white rounded-lg hover:bg-sky-700 text-sm">
+                Explore
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </AnimatedPage>
   );
 };
 

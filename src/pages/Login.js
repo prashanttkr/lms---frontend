@@ -1,26 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-function Login() {
+const Login = ({ onLogin }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email && password) {
+      onLogin();
+    }
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-blue-300">
-      <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-sm">
-        <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">LMS Login</h2>
-        <form className="space-y-4">
-          <div>
-            <label className="block mb-1 font-medium text-gray-600">Email</label>
-            <input type="email" placeholder="you@example.com" className="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          <div>
-            <label className="block mb-1 font-medium text-gray-600">Password</label>
-            <input type="password" placeholder="••••••••" className="w-full border rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          <button type="submit" className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition duration-200">
-            Sign In
-          </button>
-        </form>
-      </div>
-    </div>
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <h2 className="text-2xl font-semibold text-center text-sky-600">Login</h2>
+      <input
+        type="email"
+        placeholder="Email"
+        className="w-full p-2 border border-gray-300 rounded"
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        className="w-full p-2 border border-gray-300 rounded"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button
+        type="submit"
+        className="w-full bg-sky-500 text-white py-2 rounded hover:bg-sky-600"
+      >
+        Login
+      </button>
+    </form>
   );
-}
+};
 
 export default Login;
+
